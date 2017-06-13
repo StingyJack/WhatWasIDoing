@@ -1,3 +1,6 @@
+Imports System.IO
+Imports System.Linq
+
 Public Class Form1
 
     Private DEFAULT_BUTTON_COLOR As Color
@@ -169,5 +172,61 @@ Public Class Form1
         Catch ex As Exception
             MessageBox.Show(ex.ToString())
         End Try
+    End Sub
+
+    Private Sub btnLoad_Click(sender As Object, e As EventArgs) Handles btnLoad.Click
+
+
+        Dim logPath = Environment.ExpandEnvironmentVariables("%USERPROFILE%\my documents\WTFWID")
+
+        Dim di as New DirectoryInfo(logPath)
+        Dim files = di.GetFileSystemInfos().OrderByDescending(Function(f) f.LastWriteTime).Select(Function(f) f.FullName).ToList()
+        Dim newestFile = files(0)
+        
+
+        If (newestFile Is Nothing) Then
+
+            Debug.WriteLine("No newest file")
+            Return
+        End If
+
+        Debug.WriteLine($"Found {newestFile}")
+
+        Dim fileLines = File.ReadAllLines(newestFile)
+        Array.Reverse(fileLines)
+
+        Dim scrapedReversedLines As New List(Of String)
+        Dim lineBreak = "--------------------------------------------------------------------------------"
+
+        Dim endingBreakFound = False
+        Dim startingBreakFound = False
+
+        For Each fileLine As String In fileLines
+            If fileLine.IndexOf(lineBreak) >= 0 Then
+
+                If startingBreakFound = False AndAlso endingBreakFound = False Then
+
+                    endingBreakFound = True
+
+                    Continue For
+                ElseIf startingBreakFound = False AndAlso endingBreakFound = True Then
+                    Exit For
+                End If
+            End If
+
+            If startingBreakFound = False AndAlso endingBreakFound = True Then
+                scrapedReversedLines.Add(fileLine)
+            End If
+        Next
+        scrapedReversedLines.RemoveAt(scrapedReversedLines.Count -1)
+
+        Dim scrapedForwardLines = scrapedReversedLines.ToArray()
+        Array.Reverse(scrapedForwardLines)
+
+        For Each scrapedForwardLine As String In scrapedForwardLines
+            rTxtDoingThis.Text += $"{scrapedForwardLine}{Environment.NewLine}"
+        Next
+
+        
     End Sub
 End Class

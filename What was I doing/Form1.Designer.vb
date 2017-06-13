@@ -39,6 +39,7 @@ Partial Class Form1
         Me.rTxtDoingThis = New System.Windows.Forms.RichTextBox()
         Me.btnBul = New System.Windows.Forms.Button()
         Me.btnOpenFolder = New System.Windows.Forms.Button()
+        Me.btnLoad = New System.Windows.Forms.Button()
         Me.SuspendLayout
         '
         'lblCurrentTime
@@ -75,7 +76,7 @@ Partial Class Form1
         '
         Me.sbrStatus.Location = New System.Drawing.Point(0, 402)
         Me.sbrStatus.Name = "sbrStatus"
-        Me.sbrStatus.Size = New System.Drawing.Size(438, 22)
+        Me.sbrStatus.Size = New System.Drawing.Size(484, 22)
         Me.sbrStatus.TabIndex = 4
         Me.sbrStatus.Text = "Loaded"
         '
@@ -173,7 +174,7 @@ Partial Class Form1
         Me.rTxtDoingThis.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0,Byte))
         Me.rTxtDoingThis.Location = New System.Drawing.Point(15, 12)
         Me.rTxtDoingThis.Name = "rTxtDoingThis"
-        Me.rTxtDoingThis.Size = New System.Drawing.Size(411, 258)
+        Me.rTxtDoingThis.Size = New System.Drawing.Size(457, 258)
         Me.rTxtDoingThis.TabIndex = 13
         Me.rTxtDoingThis.Text = ""
         '
@@ -197,11 +198,21 @@ Partial Class Form1
         Me.btnOpenFolder.Text = "Open"
         Me.btnOpenFolder.UseVisualStyleBackColor = true
         '
+        'btnLoad
+        '
+        Me.btnLoad.Location = New System.Drawing.Point(422, 346)
+        Me.btnLoad.Name = "btnLoad"
+        Me.btnLoad.Size = New System.Drawing.Size(50, 23)
+        Me.btnLoad.TabIndex = 16
+        Me.btnLoad.Text = "Load"
+        Me.btnLoad.UseVisualStyleBackColor = true
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(438, 424)
+        Me.ClientSize = New System.Drawing.Size(484, 424)
+        Me.Controls.Add(Me.btnLoad)
         Me.Controls.Add(Me.btnOpenFolder)
         Me.Controls.Add(Me.btnBul)
         Me.Controls.Add(Me.rTxtDoingThis)
@@ -240,4 +251,5 @@ End Sub
     Friend WithEvents rTxtDoingThis As System.Windows.Forms.RichTextBox
     Friend WithEvents btnBul As System.Windows.Forms.Button
     Friend WithEvents btnOpenFolder As Button
+    Friend WithEvents btnLoad As Button
 End Class
