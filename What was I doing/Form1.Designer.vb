@@ -196,10 +196,11 @@ Partial Class Form1
         Me.btnOpenFolder.Size = New System.Drawing.Size(54, 23)
         Me.btnOpenFolder.TabIndex = 15
         Me.btnOpenFolder.Text = "Open"
-        Me.btnOpenFolder.UseVisualStyleBackColor = true
+        Me.btnOpenFolder.UseVisualStyleBackColor = True
         '
         'btnLoad
         '
+        Me.btnLoad.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnLoad.Location = New System.Drawing.Point(422, 346)
         Me.btnLoad.Name = "btnLoad"
         Me.btnLoad.Size = New System.Drawing.Size(50, 23)
